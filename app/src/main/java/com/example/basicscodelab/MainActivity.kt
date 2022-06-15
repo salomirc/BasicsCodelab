@@ -60,17 +60,27 @@ private fun Greeting(name: String) {
                 .weight(1f)
                 .padding(bottom = extraPadding)
             ) {
-                Text(text = "Hello, ", style = ExtendedTheme.typography.bigButtonText)
+                Text(
+                    text = "Show more, ",
+                    style = ExtendedTheme.typography.bigButtonText
+                )
                 Text(text = name, style = MaterialTheme.typography.h6)
             }
             Column(modifier = Modifier.padding(bottom = extraPadding)) {
                 OutlinedButton(
                     onClick = { expanded = !expanded }
                 ) {
-                    Text(if (expanded) "Show less" else "Show more")
+                    Text(
+                        text =  if (expanded) "Show less" else "Show more",
+                        style = ExtendedTheme.typography.bigButtonText,
+                        color = ExtendedTheme.colors.onTertiary
+                    )
                 }
                 Button(onClick = { expanded = !expanded}) {
-                    Text(if (expanded) "Show less" else "Show more", color = ExtendedTheme.colors.onTertiary)
+                    Text(
+                        text =  if (expanded) "Show less" else "Show more",
+                        color = ExtendedTheme.colors.onTertiary
+                    )
                 }
             }
         }

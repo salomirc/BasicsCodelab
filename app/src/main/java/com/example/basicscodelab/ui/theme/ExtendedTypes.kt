@@ -18,6 +18,7 @@ val LocalExtendedTypes = staticCompositionLocalOf {
     )
 }
 
+
 val ExtendedTypography = ExtendedTypes(
     bigButtonText = Typography.button.copy(
         fontWeight = FontWeight.Black,
