@@ -1,28 +1,10 @@
 package com.example.basicscodelab.ui.theme
 
-import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.material.Colors
 import androidx.compose.ui.graphics.Color
 
-@Immutable
-data class ExtendedColors(
-    val tertiary: Color,
-    val onTertiary: Color
-)
+val Colors.tertiary: Color
+    get() = if (isLight) CustomTeal else CustomGray
 
-val LocalExtendedColors = staticCompositionLocalOf {
-    ExtendedColors(
-        tertiary = Color.Unspecified,
-        onTertiary = Color.Unspecified
-    )
-}
-
-val DarkExtendedColorPalette = ExtendedColors(
-    tertiary = CustomGray,
-    onTertiary = CustomTeal
-)
-
-val LightExtendedColorPalette = ExtendedColors(
-    tertiary = CustomTeal,
-    onTertiary = CustomGray
-)
+val Colors.onTertiary: Color
+    get() = if (isLight) CustomGray else CustomTeal

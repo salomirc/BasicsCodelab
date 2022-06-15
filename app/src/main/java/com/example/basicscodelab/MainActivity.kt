@@ -16,13 +16,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.basicscodelab.ui.theme.ExtendedTheme
+import com.example.basicscodelab.ui.theme.BasicsCodelabTheme
+import com.example.basicscodelab.ui.theme.bigButtonText
+import com.example.basicscodelab.ui.theme.onTertiary
+import com.example.basicscodelab.ui.theme.tertiary
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ExtendedTheme {
+            BasicsCodelabTheme {
                 MyApp()
             }
         }
@@ -61,8 +64,9 @@ private fun Greeting(name: String) {
                 .padding(bottom = extraPadding)
             ) {
                 Text(
-                    text = "Show more, ",
-                    style = ExtendedTheme.typography.bigButtonText
+                    text = "Hello, ",
+                    style = MaterialTheme.typography.bigButtonText,
+                    color = MaterialTheme.colors.onTertiary
                 )
                 Text(text = name, style = MaterialTheme.typography.h6)
             }
@@ -72,14 +76,19 @@ private fun Greeting(name: String) {
                 ) {
                     Text(
                         text =  if (expanded) "Show less" else "Show more",
-                        style = ExtendedTheme.typography.bigButtonText,
-                        color = ExtendedTheme.colors.onTertiary
+                        style = MaterialTheme.typography.bigButtonText
                     )
                 }
-                Button(onClick = { expanded = !expanded}) {
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = MaterialTheme.colors.tertiary,
+                        contentColor = MaterialTheme.colors.onTertiary
+                    ),
+                    onClick = { expanded = !expanded }
+                ) {
                     Text(
                         text =  if (expanded) "Show less" else "Show more",
-                        color = ExtendedTheme.colors.onTertiary
+                        color = MaterialTheme.colors.onTertiary
                     )
                 }
             }
@@ -100,7 +109,7 @@ private fun Greeting(name: String) {
 )
 @Composable
 fun DefaultPreview() {
-    ExtendedTheme {
+    BasicsCodelabTheme {
         MyApp()
     }
 }

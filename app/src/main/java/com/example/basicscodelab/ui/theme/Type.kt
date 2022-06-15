@@ -11,10 +11,10 @@ import com.example.basicscodelab.R
 // Set of Material typography styles to start with
 val Typography = Typography(
     defaultFontFamily = FontFamily(Font(R.font.architects_daughter)),
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+    h6 = TextStyle(
+        fontWeight = FontWeight.Medium,
+        fontSize = 20.sp,
+        letterSpacing = 0.15.sp
     )
     /* Other default text styles to override
     button = TextStyle(
