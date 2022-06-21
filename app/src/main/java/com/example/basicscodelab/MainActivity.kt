@@ -87,58 +87,52 @@ fun OnboardScreen(onContinueClicked: () -> Unit) {
 
 @Composable
 private fun Greeting(name: String) {
+    var expanded by rememberSaveable { mutableStateOf(false) }
     Card(
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
         elevation = 10.dp
         ) {
-        CardContent(name)
-    }
-}
-
-@Composable
-private fun CardContent(name: String) {
-    var expanded by rememberSaveable { mutableStateOf(false) }
-
-    Row(
-        modifier = Modifier
-            .padding(12.dp)
-            .animateContentSize(
-                animationSpec = spring(
-                    dampingRatio = Spring.DampingRatioMediumBouncy,
-                    stiffness = Spring.StiffnessLow
-                )
-            )
-    ) {
-        Column(
+        Row(
             modifier = Modifier
-                .weight(1f)
                 .padding(12.dp)
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioMediumBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
         ) {
-            Text(
-                text = stringResource(R.string.hello),
-                style = MaterialTheme.typography.cellHeader
-            )
-            Text(
-                text = name,
-                style = MaterialTheme.typography.cellTitle
-            )
-            if (expanded) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(12.dp)
+            ) {
                 Text(
-                    text = ("Composem ipsum color sit lazy, " +
-                            "padding theme elit, sed do bouncy. ").repeat(4),
+                    text = stringResource(R.string.hello),
+                    style = MaterialTheme.typography.cellHeader
+                )
+                Text(
+                    text = name,
+                    style = MaterialTheme.typography.cellTitle
+                )
+                if (expanded) {
+                    Text(
+                        text = ("Composem ipsum color sit lazy, " +
+                                "padding theme elit, sed do bouncy. ").repeat(4),
+                    )
+                }
+            }
+            IconButton(onClick = { expanded = !expanded }) {
+                Icon(
+                    imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+                    contentDescription = if (expanded) {
+                        stringResource(R.string.show_less)
+                    } else {
+                        stringResource(R.string.show_more)
+                    }
+
                 )
             }
-        }
-        IconButton(onClick = { expanded = !expanded }) {
-            Icon(
-                imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
-                contentDescription = if (expanded) {
-                    stringResource(R.string.show_less)
-                } else {
-                    stringResource(R.string.show_more)
-                }
-
-            )
         }
     }
 }
