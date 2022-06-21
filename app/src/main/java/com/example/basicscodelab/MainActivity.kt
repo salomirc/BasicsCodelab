@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.basicscodelab.ui.theme.BasicsCodelabTheme
+import com.example.basicscodelab.ui.theme.card
 import com.example.basicscodelab.ui.theme.cellHeader
 import com.example.basicscodelab.ui.theme.cellTitle
 
@@ -52,9 +53,9 @@ fun MyApp() {
 
 @Composable
 private fun Greetings(names: List<String> = List(1000) { "$it" }) {
+    //used for background color of the screen (Root Container)
     Surface(
-        modifier = Modifier
-            .fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.background
     ) {
         LazyColumn(modifier = Modifier.padding(vertical = 4.dp)) {
@@ -90,6 +91,7 @@ private fun Greeting(name: String) {
     var expanded by rememberSaveable { mutableStateOf(false) }
     Card(
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+        shape = MaterialTheme.shapes.card,
         elevation = 10.dp
         ) {
         Row(
@@ -157,7 +159,19 @@ fun DefaultPreview() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 320, heightDp = 320)
+@Preview(
+    name = "Light Mode",
+    showBackground = true,
+    widthDp = 320,
+    heightDp = 640
+)
+@Preview(
+    name = "Dark Mode",
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    widthDp = 320,
+    heightDp = 640
+)
 @Composable
 fun OnboardingPreview() {
     BasicsCodelabTheme {
